@@ -62,7 +62,9 @@
         "xutility": "cpp",
         "*.tcc": "cpp",
         "memory_resource": "cpp",
-        "string_view": "cpp"
+        "string_view": "cpp",
+        "stack": "cpp",
+        "random": "cpp"
     },
     "C_Cpp.errorSquiggles": "Disabled"
 }
