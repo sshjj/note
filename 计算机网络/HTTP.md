@@ -153,5 +153,5 @@ SSL/TLS 协议基本流程：
 SSL/TLS 的「握⼿阶段」涉及四次通信，可⻅下图：
 <center>  <!--开始居中对齐-->
 
-![ssl](./pic/20200728190920.png )
+![ssl](https://github.com/sshjj/note/blob/master/pic/20200728190920.png )
 </center> <!--结束居中对齐-->
