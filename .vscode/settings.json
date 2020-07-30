@@ -64,7 +64,10 @@
         "memory_resource": "cpp",
         "string_view": "cpp",
         "stack": "cpp",
-        "random": "cpp"
+        "random": "cpp",
+        "filesystem": "cpp",
+        "forward_list": "cpp",
+        "regex": "cpp"
     },
     "C_Cpp.errorSquiggles": "Disabled"
 }
