@@ -67,7 +67,8 @@
         "random": "cpp",
         "filesystem": "cpp",
         "forward_list": "cpp",
-        "regex": "cpp"
+        "regex": "cpp",
+        "bitset": "cpp"
     },
     "C_Cpp.errorSquiggles": "Disabled"
 }
