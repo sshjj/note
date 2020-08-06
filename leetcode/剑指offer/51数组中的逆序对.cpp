@@ -7,6 +7,32 @@
 // 归并排序
 class Solution {
 public:
+    vector<int>tmp;
+    int reversePairs(vector<int>& nums) {
+        tmp = vector<int>(nums.size());
+        return merge(nums,0,nums.size()-1);
+    }
+    int merge(vector<int>&nums,int l,int r){
+        if(l>=r)return 0;
+        int mid = (l+r)>>1;
+        int res = merge(nums,l,mid)+merge(nums,mid+1,r);
+        int i = l,j = mid+1;
+        for(int k = l;k<=r;k++){
+            if(i<=mid && (j>r || nums[i]<=nums[j])){
+                tmp[k] = nums[i++];
+            }
+            else{
+                tmp[k] = nums[j++];
+                res += mid - i +1;
+            }
+        }
+        for(int i = l;i<=r;i++)nums[i] = tmp[i];
+        return res;
+    }
+};
+
+class Solution {
+public:
     int merge(vector<int> &nums,int l,int r){
         if(l>=r)return 0;
         int mid = (l+ r) >>1;
