@@ -1,23 +1,26 @@
 # 一、总结
 一句话总结：
-1、存储位置：cookie数据存放在客户的浏览器上，session数据放在服务器上。
-2、安全性：cookie不是很安全，别人可以分析存放在本地的COOKIE并进行COOKIE欺骗考虑到安全应当使用session。
-3、性能：session会在一定时间内保存在服务器上。当访问增多，会比较占用你服务器的性能考虑到减轻服务器性能方面，应当使用COOKIE。
-4、限制：单个cookie保存的数据不能超过4K，很多浏览器都限制一个站点最多保存20个cookie。
+1. 存储位置：cookie数据存放在客户的浏览器上，session数据放在服务器上。
+2. 安全性：cookie不是很安全，别人可以分析存放在本地的COOKIE并进行COOKIE欺骗考虑到安全应当使用session。
+3. 性能：session会在一定时间内保存在服务器上。当访问增多，会比较占用你服务器的性能考虑到减轻服务器性能方面，应当使用COOKIE。
+4. 限制：单个cookie保存的数据不能超过4K，很多浏览器都限制一个站点最多保存20个cookie。
  
 
 1、cookie原理？
+
 当你在浏览网站的时候，WEB 服务器会先送一小小资料放在你的计算机上，Cookie 会帮你在网站上所打的文字或是一些选择，都纪录下来。当下次你再光临同一个网站，WEB 服务器会先看看有没有它上次留下的 Cookie 资料，有的话，就会依据 Cookie里的内容来判断使用者，送出特定的网页内容给你。
+
 Cookie 的使用很普遍，许多有提供个人化服务的网站，都是利用 Cookie来辨认使用者，以方便送出使用者量身定做的内容，像是 Web 接口的免费 email 网站，都要用到 Cookie。
 
  
 
 2、session原理？
+
 cookie保存session的id：保存这个session id的方式可以采用cookie，一般这个cookie的名字都是类似于SEEESIONID。
 session机制是一种服务器端的机制，服务器使用一种类似于散列表的结构（也可能就是使用散列表）来保存信息。
 session机制是一种服务器端的机制，服务器使用一种类似于散列表的结构（也可能就是使用散列表）来保存信息。
 
-          当程序需要为某个客户端的请求创建一个session时，服务器首先检查这个客户端的请求里是否已包含了一个session标识
+当程序需要为某个客户端的请求创建一个session时，服务器首先检查这个客户端的请求里是否已包含了一个session标识
 
 （称为session id），如果已包含则说明以前已经为此客户端创建过session，服务器就按照session id把这个session检索出来
 
@@ -30,10 +33,6 @@ session机制是一种服务器端的机制，服务器使用一种类似于散�
 服务器。一般这个cookie的名字都是类似于SEEESIONID。但cookie可以被人为的禁止，则必须有其他机制以便在cookie被禁止时
 
 仍然能够把session id传递回服务器。
-
- 
-
- 
 
  
 
@@ -80,7 +79,7 @@ cookie的内容主要包括：名字，值，过期时间，路径和域。路�
 
 session机制。session机制是一种服务器端的机制，服务器使用一种类似于散列表的结构（也可能就是使用散列表）来保存信息。
 
-          当程序需要为某个客户端的请求创建一个session时，服务器首先检查这个客户端的请求里是否已包含了一个session标识
+当程序需要为某个客户端的请求创建一个session时，服务器首先检查这个客户端的请求里是否已包含了一个session标识
 
 （称为session id），如果已包含则说明以前已经为此客户端创建过session，服务器就按照session id把这个session检索出来
 
@@ -96,25 +95,27 @@ session机制。session机制是一种服务器端的机制，服务器使用一
 
 经常被使用的一种技术叫做URL重写，就是把session id直接附加在URL路径的后面。还有一种技术叫做表单隐藏字段。就是服务器
 
-会自动修改表单，添加一个隐藏字段，以便在表单提交时能够把session id传递回服务器。比如： 
+会自动修改表单，添加一个隐藏字段，以便在表单提交时能够把session id传递回服务器。比如：
+``` 
 <form name="testform" action="/xxx"> 
 <input type="hidden" name="jsessionid" value="ByOK3vjFD75aPnrF7C2HmdnV6QZcEbzWoWiBYEnLerjQ99zWpBng!-145788764"> 
 <input type="text"> 
 </form> 
+```
 实际上这种技术可以简单的用对action应用URL重写来代替。
 
 cookie 和session 的区别：
 
-1、cookie数据存放在客户的浏览器上，session数据放在服务器上。
+1. cookie数据存放在客户的浏览器上，session数据放在服务器上。
 
-2、cookie不是很安全，别人可以分析存放在本地的COOKIE并进行COOKIE欺骗
+2. cookie不是很安全，别人可以分析存放在本地的COOKIE并进行COOKIE欺骗
    考虑到安全应当使用session。
 
-3、session会在一定时间内保存在服务器上。当访问增多，会比较占用你服务器的性能
+3. session会在一定时间内保存在服务器上。当访问增多，会比较占用你服务器的性能
    考虑到减轻服务器性能方面，应当使用COOKIE。
 
-4、单个cookie保存的数据不能超过4K，很多浏览器都限制一个站点最多保存20个cookie。
+4. 单个cookie保存的数据不能超过4K，很多浏览器都限制一个站点最多保存20个cookie。
 
-5、所以个人建议：
+5. 所以个人建议：
    将登陆信息等重要信息存放为SESSION
    其他信息如果需要保留，可以放在COOKIE中

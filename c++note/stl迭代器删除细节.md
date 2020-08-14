@@ -1,5 +1,6 @@
 # STL 删除erase
 c++中STL容器vector/list/map/set/deque/string等删除元素的问题，迭代器容易出现以下错误，示例代码如下：
+```
 std::vector<int> arrayList;
 ...
 std::vector<int>::iterator it = arrayList.begin();
@@ -8,6 +9,7 @@ for ( ; it != arrayList.end(); it++)
     if (...)
         arrayList.erase(it);
 }
+```
 显然若条件为真即if(...)为true，那么程序执行调试就会崩溃。
 根本原因是：当容器中的一个元素被删除时，指向该元素后续的迭代器变得无效。上面的代码中，只要执行了erase(it),那么it就会变得无效，那么执行it++就肯定会出错。
 
@@ -18,6 +20,7 @@ for ( ; it != arrayList.end(); it++)
 # 正确写法
 供参考的正确的写法如下：
 1. 对于节点式容器（map/list/set）
+```
 std::map<int, struct> mapInfo;
 ...
 std::map<int, struct>::iterator it = mapInfo.begin();
@@ -33,7 +36,9 @@ while (it != mapInfo.end())
         it++;
     }
 }
+```
 2. 对于顺序式容器（vector/string/deque）
+```
 std::vector<int> arrayInt;
 ...
 std::vector<int>::iterator it = arrayInt.begin();
@@ -49,3 +54,4 @@ while (it != arrayInt.end())
     {
         it++;
     }
+```
