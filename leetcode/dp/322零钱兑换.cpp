@@ -23,3 +23,22 @@ public:
         return dp[amount];
     }
 };
+
+//dfs+贪心+回溯
+class Solution {
+public:
+    int coinChange(vector<int>& coins, int amount) {
+        int res = INT_MAX;
+        if(!amount)return 0;
+        sort(coins.rbegin(),coins.rend());
+        dfs(coins,amount,0,0,res);
+        return res == INT_MAX?-1:res;
+    }
+    void dfs(vector<int>& coins,int amount,int cnt,int index,int &res){
+        if(amount == 0){res= min(res,cnt);return ;}
+        if(index == coins.size())return ;
+        for(int k = amount/coins[index];k>=0&& k+cnt<res;--k){
+            dfs(coins,amount-k*coins[index],cnt+k,index+1,res);
+        }
+    }
+};
