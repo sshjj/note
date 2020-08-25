@@ -49,3 +49,39 @@ public:
         return 0;
     }
 };
+
+////////////////////////////////////////
+class Solution {
+public:
+    int ladderLength(string beginWord, string endWord, vector<string>& wordList) {
+        if(wordList.empty()||beginWord.empty()||endWord.empty())return 0;
+        if(find(wordList.begin(),wordList.end(),endWord)==wordList.end())return 0;
+        int step = 1;
+        vector<int>visit(wordList.size());
+        queue<string>q;
+        q.push(beginWord);
+        while(!q.empty()){
+            step++;
+            int n = q.size();
+            for(int i=0;i<n;i++){
+                string s = q.front();
+                q.pop();
+                for(int j = 0;j<wordList.size();j++){
+                    if(visit[j]==0){
+                        int diff = 0;
+                        for(int k =0;k<s.size();k++){
+                            if(s[k]!=wordList[j][k])
+                                diff++;
+                        }
+                        if(diff==1){
+                            if(wordList[j] == endWord)return step;
+                            visit[j] = 1;
+                            q.push(wordList[j]);
+                        }
+                    }
+                }
+            }
+        }
+        return 0;
+    }
+};
