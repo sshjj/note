@@ -38,3 +38,23 @@ public:
         return dp[n-1];
     }
 };
+
+///////////////////////////////////////////
+class Solution {
+public:
+    int minCut(string s) {
+        int n = s.size();
+        vector<vector<bool>>isPar(n,vector<bool>(n,false));
+        vector<int>dp(n+1,n);
+        dp[0] = 0;
+        for(int i =0;i<n;i++){
+            for(int j = 0;j<=i;j++){
+                if(s[j] == s[i]&&(i-j<3||isPar[j+1][i-1])){
+                    isPar[j][i] = true;
+                    dp[i+1]= min(dp[i+1],dp[j]+1);
+                }
+            }
+        }
+        return dp[n]-1;
+    }
+};
